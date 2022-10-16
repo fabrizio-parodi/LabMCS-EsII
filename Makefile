@@ -15,4 +15,4 @@ Main: Main.cpp Vector.o MatPoint.o OdeSolver.o
 	$(CC) $(CFLAGS) -o Main Main.cpp Vector.o OdeSolver.o MatPoint.o $(CFLAGSROOT) $(LIBSROOT)
 
 clean:
-	rm *.o Main MainPM
+	rm *.o Main 

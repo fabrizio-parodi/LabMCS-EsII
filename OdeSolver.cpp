@@ -1,15 +1,15 @@
 #include "Vector.h"
 #include "OdeSolver.h"
 
-void OdeSolver::Punto(MatPoint tmp){
+void OdeSolver::SetMatPoint(MatPoint tmp){
   m_p.push_back(tmp);
 }
 
-vector<MatPoint> OdeSolver::Punti(){
+vector<MatPoint> OdeSolver::GetMatPoints(){
   return m_p;
 }
 
-MatPoint OdeSolver::Punto(unsigned int i){
+MatPoint OdeSolver::GetMatPoint(unsigned int i){
   return m_p[i];
 }
 
@@ -25,11 +25,11 @@ double OdeSolver::T(){
   return      m_t;
 }
 
-void OdeSolver::Passo(double h){
+void OdeSolver::Step(double h){
   m_h = h;
 }
 
-double OdeSolver::Passo(){
+double OdeSolver::Step(){
   return   m_h;
 }
 
@@ -40,7 +40,7 @@ Vector OdeSolver::m_eqDiff(unsigned int i, double t, vector<MatPoint> p){
 }
 
 //Da implementare a cura dello studente
-void OdeSolver::Cinematica(){
+void OdeSolver::Solve(){
 
   if (m_method=="Eulero"){
     vector<Vector>  k1(m_p.size());
