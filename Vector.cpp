@@ -1,34 +1,34 @@
-#include "Vettore.h"
+#include "Vector.h"
 #include <cmath>
 #include <iostream>
 
 
-double Vettore::X() const{
+double Vector::X() const{
   return m_v[0];
 }
 
-double Vettore::Y() const{
+double Vector::Y() const{
   return m_v[1];
 }
 
-double Vettore::Z() const{
+double Vector::Z() const{
   return m_v[2];
 }
 
-void Vettore::X(double x){
+void Vector::X(double x){
   m_v[0] = x;
 }
 
-void Vettore::Y(double y){
+void Vector::Y(double y){
   m_v[1] = y;
 }
 
-void Vettore::Z(double z){
+void Vector::Z(double z){
   m_v[2] = z;
 }
 
-Vettore Vettore::operator-(){
-  Vettore res;
+Vector Vector::operator-(){
+  Vector res;
   for (int i=0;i<3;i++){
     res.m_v[i] = -m_v[i];
   }
@@ -36,23 +36,23 @@ Vettore Vettore::operator-(){
 }
 
 
-Vettore Vettore::operator-( Vettore b){
-  Vettore res;
+Vector Vector::operator-( Vector b){
+  Vector res;
   for (int i=0;i<3;i++){
     res.m_v[i] = m_v[i] - b.m_v[i];
   }
   return res;
 }
 
-Vettore Vettore::operator+( Vettore b){
-  Vettore res;
+Vector Vector::operator+( Vector b){
+  Vector res;
   for (int i=0;i<3;i++){
     res.m_v[i] = m_v[i] + b.m_v[i];
   }
   return res;
 }
 
-double Vettore::operator*( Vettore b){
+double Vector::operator*( Vector b){
   double prod=0;
   for (int i=0;i<3;i++){
     prod += m_v[i]*b.m_v[i];
@@ -60,35 +60,35 @@ double Vettore::operator*( Vettore b){
   return prod;
 }
 
-Vettore Vettore::Cross( Vettore b){
-  Vettore res;
+Vector Vector::Cross( Vector b){
+  Vector res;
   res.m_v[0] = m_v[1]*b.m_v[2]-b.m_v[1]*m_v[2];
   res.m_v[1] = m_v[2]*b.m_v[0]-b.m_v[2]*m_v[0];
   res.m_v[2] = m_v[0]*b.m_v[1]-b.m_v[0]*m_v[1];
   return res;
 }
 
-Vettore Vettore::operator*(double f){
-  Vettore res;
+Vector Vector::operator*(double f){
+  Vector res;
   for (int i=0;i<3;i++){
     res.m_v[i] = m_v[i]*f;
   }
   return res;
 }
 
-double Vettore::Mod() {
+double Vector::Mod() {
   return sqrt((*this)*(*this));
 }
 
-Vettore Vettore::Vers() {
+Vector Vector::Vers() {
   return (*this)*(1/Mod());
 }
 
-Vettore operator*(double f,  Vettore b){
+Vector operator*(double f,  Vector b){
   return b*f;
 }
 
-std::ostream& operator<<(std::ostream& os,  Vettore b){
+std::ostream& operator<<(std::ostream& os,  Vector b){
   os << "(";
   os << b.X() << ",";
   os << b.Y() << ",";
@@ -96,9 +96,9 @@ std::ostream& operator<<(std::ostream& os,  Vettore b){
   return os;
 }
 
-std::istream& operator>>(std:: istream& is, Vettore& b){
+std::istream& operator>>(std:: istream& is, Vector& b){
   double x,y,z;
   is >> x >> y >> z;
-  b  = Vettore(x,y,z);
+  b  = Vector(x,y,z);
   return is;
 }
