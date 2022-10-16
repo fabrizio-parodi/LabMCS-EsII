@@ -2,30 +2,30 @@
 #define _ODESOLVER
 
 #include <vector>
-#include "Vettore.h"
-#include "PuntoMateriale.h"
+#include "Vector.h"
+#include "MatPoint.h"
 
 using namespace std;
 
 class OdeSolver{
  public:
-  OdeSolver(string method="Eulero", vector<PuntoMateriale> p=vector<PuntoMateriale>(0)):m_method(method),m_p(p),m_t(0),m_h(0.1){}
-  void                   Punto(PuntoMateriale tmp);
-  PuntoMateriale         Punto(unsigned int i);
-  vector<PuntoMateriale> Punti();
+  OdeSolver(string method="Eulero", vector<MatPoint> p=vector<MatPoint>(0)):m_method(method),m_p(p),m_t(0),m_h(0.1){}
+  void                   Punto(MatPoint tmp);
+  MatPoint         Punto(unsigned int i);
+  vector<MatPoint> Punti();
   unsigned int   N();
   void           T(double t0);
   double         T();
   void           Passo(double h);
   double         Passo();
   void           Cinematica();
-  std::function < Vettore(unsigned int i,unsigned int j, double t, vector<PuntoMateriale> p) > fInterna;
-  std::function < Vettore(unsigned int i,double t, vector<PuntoMateriale> p) >        fEsterna;
+  std::function < Vector(unsigned int i,unsigned int j, double t, vector<MatPoint> p) > fInterna;
+  std::function < Vector(unsigned int i,double t, vector<MatPoint> p) >        fEsterna;
  private:
   string   m_method;
-  vector<PuntoMateriale> m_p;
+  vector<MatPoint> m_p;
   double   m_t,m_h; 
-  Vettore  m_eqDiff(unsigned int i, double t, vector<PuntoMateriale>);
+  Vector  m_eqDiff(unsigned int i, double t, vector<MatPoint>);
 };
 
 

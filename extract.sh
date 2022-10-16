@@ -1,9 +1,7 @@
 #!/bin/bash
-
 echo " " > fileInput
-for i in $@
-do 
-    grep   $i effemeridi.h | grep "/\*" | awk '{print $1}' >> fileInput
-    grep -A6 "// $i" effemeridi.h | tail -6 >> fileInput
+for pl in $*
+do
+    grep -A6 "// $pl" SolarSystData.h | grep -v "// $pl" >> fileInput
     echo " " >> fileInput
 done

@@ -11,19 +11,19 @@
 
 
 #include "OdeSolver.h"
-#include "Vettore.h"
-#include "PuntoMateriale.h"
+#include "Vector.h"
+#include "MatPoint.h"
 
 using namespace std;
 
-Vettore fInterna(unsigned int i,unsigned int j, double t, vector<PuntoMateriale> p){
+Vector fInterna(unsigned int i,unsigned int j, double t, vector<MatPoint> p){
   //STEP 2 definizione forza interna
-  return Vettore();
+  return Vector();
 }
 
-Vettore fEsterna(unsigned int i, double t, vector<PuntoMateriale> p){
+Vector fEsterna(unsigned int i, double t, vector<MatPoint> p){
   //STEP 2 definizione forza esterna
-  return Vettore();
+  return Vector();
 }
 
 int main(){ 
@@ -42,7 +42,7 @@ int main(){
   // OdeSolver ode(...);
   // STEP 1 creazione dell'oggetto della classe OdeSolver
   //   - creazione oggetto OdeSolver vuoto, assegnazione con il metodo Punto
-  //   - creazione di vector<PuntoMateriale> e poi creazione di OdelSover
+  //   - creazione di vector<MatPoint> e poi creazione di OdelSover
 
   // Creazione classe OdeSolver (per la soluzione dell'equ. diff.)
   ode.fInterna = fInterna;

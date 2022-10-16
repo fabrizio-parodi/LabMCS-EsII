@@ -1,15 +1,15 @@
-#include "Vettore.h"
+#include "Vector.h"
 #include "OdeSolver.h"
 
-void OdeSolver::Punto(PuntoMateriale tmp){
+void OdeSolver::Punto(MatPoint tmp){
   m_p.push_back(tmp);
 }
 
-vector<PuntoMateriale> OdeSolver::Punti(){
+vector<MatPoint> OdeSolver::Punti(){
   return m_p;
 }
 
-PuntoMateriale OdeSolver::Punto(unsigned int i){
+MatPoint OdeSolver::Punto(unsigned int i){
   return m_p[i];
 }
 
@@ -34,17 +34,17 @@ double OdeSolver::Passo(){
 }
 
 
-Vettore OdeSolver::m_eqDiff(unsigned int i, double t, vector<PuntoMateriale> p){
+Vector OdeSolver::m_eqDiff(unsigned int i, double t, vector<MatPoint> p){
   //STEP 3 Calcolo dell'accelerazione dovuta a forze interne e forze esterne
-  return Vettore();
+  return Vector();
 }
 
 //Da implementare a cura dello studente
 void OdeSolver::Cinematica(){
 
   if (m_method=="Eulero"){
-    vector<Vettore>  k1(m_p.size());
-    vector<Vettore>  w1(m_p.size());
+    vector<Vector>  k1(m_p.size());
+    vector<Vector>  w1(m_p.size());
     for (unsigned int i=0;i<m_p.size();i++){
       k1[i] = m_h*m_p[i].V();
       w1[i] = m_h*m_eqDiff(i,m_t,m_p);
