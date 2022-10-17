@@ -22,7 +22,7 @@ Vector fInternal(unsigned int i,unsigned int j, double t, vector<MatPoint> p){
   return Vector();
 }
 
-Vector fEsternal(unsigned int i, double t, vector<MatPoint> p){
+Vector fExternal(unsigned int i, double t, vector<MatPoint> p){
   //STEP 2 definizione forza esterna
   return Vector();
 }
@@ -47,7 +47,7 @@ int main(){
 
   // Creazione classe OdeSolver (per la soluzione dell'equ. diff.)
   ode.fInternal = fInternal;
-  ode.fEsternal = fEsternal;
+  ode.fExternal = fExternal;
   ode.Step(0.5);
 
   
@@ -70,7 +70,7 @@ int main(){
 
   //Run del metodo numerico + grafico in tempo reale delle coordinate e del mom. angolare totale
   while (ode.T()<365){
-    ode.Cinematica();
+    ode.Solve();
     for (unsigned int i=0;i<ode.N();i++){
       //STEP 4 riempimento delle grafico gr[i] con le coordinate aggiornate dei pianeti
     } 

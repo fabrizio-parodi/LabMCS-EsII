@@ -25,7 +25,7 @@ class OdeSolver{
   string   m_method;
   vector<MatPoint> m_p;
   double   m_t,m_h; 
-  Vector  m_eqDiff(unsigned int i, double t, vector<MatPoint>);
+  Vector   m_eqDiff(unsigned int i, double t, vector<MatPoint>);
 };
 
 
