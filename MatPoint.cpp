@@ -1,32 +1,32 @@
 #include "MatPoint.h"
-#include "Vector.h"
+#include "Vector3.h"
 #include <cmath>
 
-Vector MatPoint::R(){
+Vector3 MatPoint::R(){
   return m_r;
 }
 
-Vector MatPoint::V(){
+Vector3 MatPoint::V(){
   return m_v;
 }
 
-void MatPoint::R(Vector r){
+void MatPoint::R(Vector3 r){
   m_r = r;
 }
 
-void MatPoint::V(Vector v){
+void MatPoint::V(Vector3 v){
   m_v = v;
 }
 
-Vector MatPoint::GravField(Vector r){
+Vector3 MatPoint::GravField(Vector3 r){
   // F = -G m m_prova/(r-r0)^2 vers(r-r0)
   // a = F/m_prova = -G m /(r-r0)^2 vers(r-r0)
 
 
-  Vector r0   = m_r;
-  Vector dist = r-r0;
+  Vector3 r0   = m_r;
+  Vector3 dist = r-r0;
 
-  Vector val  = -consts::G*Mass()/pow(dist.Mod(),2)*dist.Vers();
+  Vector3 val  = -consts::G*Mass()/pow(dist.Mod(),2)*dist.Unit();
 
   return val;
   

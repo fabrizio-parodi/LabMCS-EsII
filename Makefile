@@ -5,14 +5,14 @@ LIBSROOT   = `root-config --glibs`
 
 all: Main
 
-Vector.o: Vector.cpp
-	$(CC) $(CFLAGS) -c Vector.cpp      $(CFLAGSROOT)
+Vector3.o: Vector3.cpp
+	$(CC) $(CFLAGS) -c Vector3.cpp      $(CFLAGSROOT)
 MatPoint.o: MatPoint.cpp 
 	$(CC) $(CFLAGS) -c MatPoint.cpp    $(CFLAGSROOT)
 OdeSolver.o: OdeSolver.cpp
 	$(CC) $(CFLAGS) -c OdeSolver.cpp      $(CFLAGSROOT)
-Main: Main.cpp Vector.o MatPoint.o OdeSolver.o
-	$(CC) $(CFLAGS) -o Main Main.cpp Vector.o OdeSolver.o MatPoint.o $(CFLAGSROOT) $(LIBSROOT)
+Main: Main.cpp Vector3.o MatPoint.o OdeSolver.o
+	$(CC) $(CFLAGS) -o Main Main.cpp Vector3.o OdeSolver.o MatPoint.o $(CFLAGSROOT) $(LIBSROOT)
 
 clean:
 	rm *.o Main 

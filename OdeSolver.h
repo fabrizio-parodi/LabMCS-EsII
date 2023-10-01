@@ -2,7 +2,7 @@
 #define _ODESOLVER
 
 #include <vector>
-#include "Vector.h"
+#include "Vector3.h"
 #include "MatPoint.h"
 
 using namespace std;
@@ -19,13 +19,13 @@ class OdeSolver{
   void           Step(double h);
   double         Step();
   void           Solve();
-  std::function < Vector(unsigned int i,unsigned int j, double t, vector<MatPoint> p) > fInternal;
-  std::function < Vector(unsigned int i,double t, vector<MatPoint> p) >        fExternal;
+  std::function < Vector3(unsigned int i,unsigned int j, double t, vector<MatPoint> p) > fInternal;
+  std::function < Vector3(unsigned int i,double t, vector<MatPoint> p) >        fExternal;
  private:
   string   m_method;
   vector<MatPoint> m_p;
   double   m_t,m_h; 
-  Vector   m_eqDiff(unsigned int i, double t, vector<MatPoint>);
+  Vector3  m_eqDiff(unsigned int i, double t, vector<MatPoint>);
 };
 
 
